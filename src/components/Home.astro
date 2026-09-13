@@ -37,29 +37,31 @@ const principles = [
       <li>
         <a class="link" href="https://github.com/mihnk" rel="noopener noreferrer">
           {t('nav.github')}
-          <span class="arrow" aria-hidden="true">&#8599;</span>
+          <span class="arrow" aria-hidden="true">
+            &#8599;
+          </span>
         </a>
       </li>
       <li>
         <a class="link" href="mailto:contact@mihnk.org">
           {t('nav.contact')}
-          <span class="arrow" aria-hidden="true">&#8599;</span>
+          <span class="arrow" aria-hidden="true">
+            &#8599;
+          </span>
         </a>
       </li>
     </ul>
   </div>
 
   <ol class="principles" aria-label={t('principles.label')}>
-    {
-      principles.map(({ term, detail }, i) => (
-        <li class="principle">
-          <span class="principle-index" aria-hidden="true">
-            {String(i + 1).padStart(2, '0')}
-          </span>
-          <h2 class="principle-term">{term}</h2>
-          <p class="principle-detail">{detail}</p>
-        </li>
-      ))
-    }
+    {principles.map(({ term, detail }, i) => (
+      <li class="principle">
+        <span class="principle-index" aria-hidden="true">
+          {String(i + 1).padStart(2, '0')}
+        </span>
+        <h2 class="principle-term">{term}</h2>
+        <p class="principle-detail">{detail}</p>
+      </li>
+    ))}
   </ol>
 </Base>
