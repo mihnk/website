@@ -45,26 +45,21 @@ const alternates = noindex
         if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
       } catch (e) {}
     </script>
-
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
 
-    {
-      alternates.map(({ code, href }) => (
-        <link rel="alternate" hreflang={localeTags[code]} href={href} />
-      ))
-    }
-    {
-      alternates.length > 0 && (
-        <link
-          rel="alternate"
-          hreflang="x-default"
-          href={new URL(localizePath(path, 'en'), Astro.site).href}
-        />
-      )
-    }
+    {alternates.map(({ code, href }) => (
+      <link rel="alternate" hreflang={localeTags[code]} href={href} />
+    ))}
+    {alternates.length > 0 && (
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={new URL(localizePath(path, 'en'), Astro.site).href}
+      />
+    )}
 
     <link
       rel="preload"
@@ -73,17 +68,15 @@ const alternates = noindex
       type="font/woff2"
       crossorigin
     />
-    {
-      locale === 'tr' && (
-        <link
-          rel="preload"
-          href="/fonts/league-spartan-latin-ext.woff2"
-          as="font"
-          type="font/woff2"
-          crossorigin
-        />
-      )
-    }
+    {locale === 'tr' && (
+      <link
+        rel="preload"
+        href="/fonts/league-spartan-latin-ext.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+    )}
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -113,10 +106,8 @@ const alternates = noindex
   <body>
     <div class="page">
       <header class="masthead">
-        {
-          /* The wordmark is a brand asset, not translated text. `lang="en"`
-            pins it to one shaping so it measures identically in every locale. */
-        }
+        {/* The wordmark is a brand asset, not translated text. `lang="en"`
+            pins it to one shaping so it measures identically in every locale. */}
         <a class="brandmark" href={localizePath('', locale)} aria-label="mihnk" lang="en">
           mih<span class="accent">n</span>k
         </a>
@@ -133,11 +124,19 @@ const alternates = noindex
 
       <footer class="footer">
         <ul class="footer-links">
-          <li><a href={localizePath('', locale)}>mihnk.org</a></li>
-          <li><a href="mailto:contact@mihnk.org">{t('footer.contact')}</a></li>
-          <li><a href="mailto:security@mihnk.org">{t('footer.security')}</a></li>
           <li>
-            <a href="https://github.com/mihnk" rel="noopener noreferrer">GitHub</a>
+            <a href={localizePath('', locale)}>mihnk.org</a>
+          </li>
+          <li>
+            <a href="mailto:contact@mihnk.org">{t('footer.contact')}</a>
+          </li>
+          <li>
+            <a href="mailto:security@mihnk.org">{t('footer.security')}</a>
+          </li>
+          <li>
+            <a href="https://github.com/mihnk" rel="noopener noreferrer">
+              GitHub
+            </a>
           </li>
         </ul>
       </footer>

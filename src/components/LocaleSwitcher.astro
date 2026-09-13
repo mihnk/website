@@ -12,26 +12,22 @@ const { locale, path } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-{
-  /* A segmented control drawn with one hairline and internal dividers — no
-    pills, no filled buttons. */
-}
+{/* A segmented control drawn with one hairline and internal dividers — no
+    pills, no filled buttons. */}
 <nav class="locales" aria-label={t('locale.label')}>
   <ul>
-    {
-      locales.map((code) => (
-        <li>
-          {code === locale ? (
-            <span class="locale is-current" aria-current="true">
-              {localeNames[code]}
-            </span>
-          ) : (
-            <a class="locale" href={localizePath(path, code)} hreflang={code} lang={code}>
-              {localeNames[code]}
-            </a>
-          )}
-        </li>
-      ))
-    }
+    {locales.map((code) => (
+      <li>
+        {code === locale ? (
+          <span class="locale is-current" aria-current="true">
+            {localeNames[code]}
+          </span>
+        ) : (
+          <a class="locale" href={localizePath(path, code)} hreflang={code} lang={code}>
+            {localeNames[code]}
+          </a>
+        )}
+      </li>
+    ))}
   </ul>
 </nav>
