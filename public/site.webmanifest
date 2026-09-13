@@ -1,0 +1,13 @@
+{
+  "name": "mihnk",
+  "short_name": "mihnk",
+  "description": "Practical, vendor-neutral tooling for Kubernetes and cloud-native environments.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbfbfa",
+  "theme_color": "#fbfbfa",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

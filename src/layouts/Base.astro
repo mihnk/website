@@ -1,0 +1,146 @@
+---
+import '../styles/global.css';
+import LocaleSwitcher from '../components/LocaleSwitcher.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { locales, localeTags, type Locale } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  /** Path without a locale prefix: '' for the homepage, '404' for the 404. */
+  path: string;
+  title: string;
+  description: string;
+  /** Keep non-canonical pages (404) out of search results. */
+  noindex?: boolean;
+}
+
+const { locale, path, title, description, noindex = false } = Astro.props;
+const t = useTranslations(locale);
+
+const canonical = new URL(localizePath(path, locale), Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+
+// Alternates are only meaningful for indexable pages.
+const alternates = noindex
+  ? []
+  : locales.map((code) => ({
+      code,
+      href: new URL(localizePath(path, code), Astro.site).href,
+    }));
+---
+
+<!doctype html>
+<html lang={localeTags[locale]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Runs before first paint: applies a stored choice so the correct theme
+         is painted immediately. Without a stored choice nothing is set and CSS
+         `prefers-color-scheme` decides, so the system theme still wins. -->
+    <script is:inline>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    {
+      alternates.map(({ code, href }) => (
+        <link rel="alternate" hreflang={localeTags[code]} href={href} />
+      ))
+    }
+    {
+      alternates.length > 0 && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={new URL(localizePath(path, 'en'), Astro.site).href}
+        />
+      )
+    }
+
+    <link
+      rel="preload"
+      href="/fonts/league-spartan-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {
+      locale === 'tr' && (
+        <link
+          rel="preload"
+          href="/fonts/league-spartan-latin-ext.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      )
+    }
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="mihnk" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={localeTags[locale]} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121315" media="(prefers-color-scheme: dark)" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="masthead">
+        {
+          /* The wordmark is a brand asset, not translated text. `lang="en"`
+            pins it to one shaping so it measures identically in every locale. */
+        }
+        <a class="brandmark" href={localizePath('', locale)} aria-label="mihnk" lang="en">
+          mih<span class="accent">n</span>k
+        </a>
+
+        <div class="masthead-controls">
+          <LocaleSwitcher locale={locale} path={path} />
+          <ThemeToggle locale={locale} />
+        </div>
+      </header>
+
+      <main class="main">
+        <slot />
+      </main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li><a href={localizePath('', locale)}>mihnk.org</a></li>
+          <li><a href="mailto:contact@mihnk.org">{t('footer.contact')}</a></li>
+          <li><a href="mailto:security@mihnk.org">{t('footer.security')}</a></li>
+          <li>
+            <a href="https://github.com/mihnk" rel="noopener noreferrer">GitHub</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import NotFound from '../../components/NotFound.astro';
+import { locales, defaultLocale, type Locale } from '../../i18n/ui';
+
+/**
+ * Cloudflare Pages serves the nearest `404.html` for an unmatched path, so
+ * `/tr/anything` needs the file at `/tr/404.html` — not `/tr/404/index.html`.
+ */
+export function getStaticPaths() {
+  return locales
+    .filter((locale) => locale !== defaultLocale)
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+---
+
+<NotFound locale={locale} />

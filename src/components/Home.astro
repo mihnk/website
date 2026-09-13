@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { type Locale } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const principles = [
+  { term: t('principles.practical.term'), detail: t('principles.practical.detail') },
+  { term: t('principles.neutral.term'), detail: t('principles.neutral.detail') },
+  { term: t('principles.declarative.term'), detail: t('principles.declarative.detail') },
+];
+---
+
+<Base locale={locale} path="" title={t('site.title')} description={t('site.description')}>
+  <h1 class="headline">
+    <span>
+      {t('home.headline.1.accent') && <em>{t('home.headline.1.accent')}</em>}
+      {t('home.headline.1.rest')}
+    </span>
+    <span>
+      {t('home.headline.2.accent') && <em>{t('home.headline.2.accent')}</em>}
+      {t('home.headline.2.rest')}
+    </span>
+    <span>{t('home.headline.3')}</span>
+  </h1>
+
+  <div class="lede">
+    <p class="description">{t('home.description')}</p>
+
+    <ul class="links">
+      <li>
+        <a class="link" href="https://github.com/mihnk" rel="noopener noreferrer">
+          {t('nav.github')}
+          <span class="arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="mailto:contact@mihnk.org">
+          {t('nav.contact')}
+          <span class="arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <ol class="principles" aria-label={t('principles.label')}>
+    {
+      principles.map(({ term, detail }, i) => (
+        <li class="principle">
+          <span class="principle-index" aria-hidden="true">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h2 class="principle-term">{term}</h2>
+          <p class="principle-detail">{detail}</p>
+        </li>
+      ))
+    }
+  </ol>
+</Base>
