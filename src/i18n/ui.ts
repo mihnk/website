@@ -53,6 +53,12 @@ export const ui = {
     'principles.declarative.term': 'Declarative',
     'principles.declarative.detail': 'Predictable and manageable by design.',
 
+    'projects.label': 'Projects',
+    'projects.zoneroute.summary': 'Kubernetes-native conditional DNS forwarding for CoreDNS.',
+    'projects.zoneroute.detail':
+      'Declarative routes, deterministic conflict resolution, and a least‑privilege controller.',
+    'projects.view': 'View project',
+
     'notfound.title': 'Page not found — mihnk',
     'notfound.description': 'The page you requested could not be found.',
     'notfound.route': 'no route',
@@ -91,6 +97,12 @@ export const ui = {
     'principles.declarative.term': 'Bildirimsel',
     'principles.declarative.detail': 'Tasarımı gereği öngörülebilir ve yönetilebilir.',
 
+    'projects.label': 'Projeler',
+    'projects.zoneroute.summary': 'CoreDNS için Kubernetes-yerel koşullu DNS yönlendirme.',
+    'projects.zoneroute.detail':
+      'Bildirimsel rotalar, belirlenimci çakışma çözümü ve en az yetkiyle çalışan bir denetleyici.',
+    'projects.view': 'Projeye git',
+
     'notfound.title': 'Sayfa bulunamadı — mihnk',
     'notfound.description': 'İstediğiniz sayfa bulunamadı.',
     'notfound.route': 'rota yok',
@@ -128,6 +140,12 @@ export const ui = {
     'principles.neutral.detail': 'Portabelt mellan miljöer.',
     'principles.declarative.term': 'Deklarativt',
     'principles.declarative.detail': 'Förutsägbart och hanterbart av design.',
+
+    'projects.label': 'Projekt',
+    'projects.zoneroute.summary': 'Kubernetes-nativ villkorlig DNS-vidarebefordran för CoreDNS.',
+    'projects.zoneroute.detail':
+      'Deklarativa rutter, deterministisk konfliktlösning och en styrenhet med minimala rättigheter.',
+    'projects.view': 'Visa projekt',
 
     'notfound.title': 'Sidan hittades inte — mihnk',
     'notfound.description': 'Sidan du efterfrågade kunde inte hittas.',

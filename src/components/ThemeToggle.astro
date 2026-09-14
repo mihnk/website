@@ -51,6 +51,10 @@ const t = useTranslations(locale);
       document.documentElement.dataset.theme = next;
       try {
         localStorage.setItem('theme', next);
+        // Shared across *.mihnk.org, so the choice carries to the project
+        // sites and back.
+        document.cookie =
+          'mihnk-theme=' + next + ';path=/;max-age=31536000;domain=.mihnk.org;samesite=lax';
       } catch (e) {}
       sync();
     });

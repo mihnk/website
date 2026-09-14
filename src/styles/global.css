@@ -323,6 +323,73 @@ a {
 }
 
 /* -------------------------------------------------------------------------
+   Projects — the same editorial register as the principles above
+   ------------------------------------------------------------------------- */
+
+.projects {
+  margin-top: var(--space-3xl);
+}
+
+.projects-label {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: var(--step-00);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-list {
+  display: grid;
+  gap: var(--space-l);
+  margin-top: var(--space-m);
+  padding: 0;
+  list-style: none;
+}
+
+/* One hairline per entry, so a second project extends the list rather than
+   introducing a new component. */
+.project {
+  padding-top: var(--space-s);
+  border-top: var(--border-hairline);
+}
+
+.project-name {
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: var(--step-2);
+  letter-spacing: -0.01em;
+}
+
+.project-summary {
+  margin-top: var(--space-2xs);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.project-detail {
+  margin-top: var(--space-2xs);
+  max-width: var(--measure);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.project-stack {
+  margin-top: var(--space-s);
+  color: var(--muted);
+  font-size: var(--step-00);
+  letter-spacing: 0.02em;
+}
+
+.project-links {
+  margin-top: var(--space-s);
+}
+
+.project-links .link {
+  font-size: var(--step-0);
+}
+
+/* -------------------------------------------------------------------------
    Footer
    ------------------------------------------------------------------------- */
 

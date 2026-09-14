@@ -15,6 +15,19 @@ const principles = [
   { term: t('principles.neutral.term'), detail: t('principles.neutral.detail') },
   { term: t('principles.declarative.term'), detail: t('principles.declarative.detail') },
 ];
+
+// One entry today; the list is shaped to take more without changing layout.
+// Project and technology names are not translated.
+const projects = [
+  {
+    name: 'ZoneRoute',
+    summary: t('projects.zoneroute.summary'),
+    detail: t('projects.zoneroute.detail'),
+    stack: ['Go', 'Kubernetes', 'CoreDNS'],
+    site: 'https://zoneroute.mihnk.org',
+    repo: 'https://github.com/mihnk/zoneroute',
+  },
+];
 ---
 
 <Base locale={locale} path="" title={t('site.title')} description={t('site.description')}>
@@ -64,4 +77,40 @@ const principles = [
       </li>
     ))}
   </ol>
+
+  <section class="projects" aria-labelledby="projects-heading">
+    <h2 class="projects-label" id="projects-heading">
+      {t('projects.label')}
+    </h2>
+
+    <ul class="project-list">
+      {projects.map((project) => (
+        <li class="project">
+          <h3 class="project-name">{project.name}</h3>
+          <p class="project-summary">{project.summary}</p>
+          <p class="project-detail">{project.detail}</p>
+          <p class="project-stack">{project.stack.join(' · ')}</p>
+
+          <ul class="links project-links">
+            <li>
+              <a class="link" href={project.site} rel="noopener noreferrer">
+                {t('projects.view')}
+                <span class="arrow" aria-hidden="true">
+                  &#8599;
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="link" href={project.repo} rel="noopener noreferrer">
+                {t('nav.github')}
+                <span class="arrow" aria-hidden="true">
+                  &#8599;
+                </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Base>
