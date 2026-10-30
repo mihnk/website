@@ -57,6 +57,9 @@ export const ui = {
     'projects.zoneroute.summary': 'Kubernetes-native conditional DNS forwarding for CoreDNS.',
     'projects.zoneroute.detail':
       'Declarative routes, deterministic conflict resolution, and a least‑privilege controller.',
+    'projects.clustrail.summary':
+      'A free, open-source Kubernetes desktop workspace for many clusters at once.',
+    'projects.clustrail.detail': 'Local-first, no account, with production safety built in.',
     'projects.view': 'View project',
 
     'notfound.title': 'Page not found — mihnk',
@@ -101,6 +104,10 @@ export const ui = {
     'projects.zoneroute.summary': 'CoreDNS için Kubernetes-yerel koşullu DNS yönlendirme.',
     'projects.zoneroute.detail':
       'Bildirimsel rotalar, belirlenimci çakışma çözümü ve en az yetkiyle çalışan bir denetleyici.',
+    'projects.clustrail.summary':
+      'Aynı anda birçok cluster için ücretsiz, açık kaynak bir Kubernetes masaüstü çalışma alanı.',
+    'projects.clustrail.detail':
+      'Yerel çalışır, hesap gerektirmez; production güvenliği yerleşik gelir.',
     'projects.view': 'Projeye git',
 
     'notfound.title': 'Sayfa bulunamadı — mihnk',
@@ -145,6 +152,10 @@ export const ui = {
     'projects.zoneroute.summary': 'Kubernetes-nativ villkorlig DNS-vidarebefordran för CoreDNS.',
     'projects.zoneroute.detail':
       'Deklarativa rutter, deterministisk konfliktlösning och en styrenhet med minimala rättigheter.',
+    'projects.clustrail.summary':
+      'En kostnadsfri Kubernetes-arbetsyta med öppen källkod för många kluster samtidigt.',
+    'projects.clustrail.detail':
+      'Körs lokalt, kräver inget konto och har skydd för produktion inbyggt.',
     'projects.view': 'Visa projekt',
 
     'notfound.title': 'Sidan hittades inte — mihnk',
